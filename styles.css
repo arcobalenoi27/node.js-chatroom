@@ -1,0 +1,167 @@
+body {
+  background:#E8FFFF;
+  height: auto;
+}
+
+.modal-content {
+  background-color: #CCCCFF;
+}
+
+li {
+  list-style: none;
+}
+
+.userListContainer {
+  margin: 3%;
+  border: 1px #C9FFFF solid;
+  background: #fff;
+  height: 740px;
+  overflow-y: auto;
+}
+
+.panel-heading {
+  background: #96FFFF;
+}
+
+.userthumbnail {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  border-radius: 8%;
+}
+
+li:hover {
+  background: #A3A3FF;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+}
+li a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.user {
+  margin-top: 1%;
+  height: 55px;
+  font-size: 20px;
+  margin-bottom: 2%;
+}
+
+.chatContainer {
+  margin-top: 3%;
+  border: 1px #C9FFFF solid;
+  height: 740px;
+  background: #fff;
+}
+
+.messageFlow {
+  background: #FAFAFA;
+  overflow-y: auto;
+  height: 610px;
+}
+
+.welcome {
+  margin-left: 51%;
+}
+
+form {
+  height: 130px;
+  background: #FAFAFA;
+  border: 1px #C9FFFF solid;
+}
+
+#message {
+  margin: 1% 0 1% 1%;
+  width: 80%;
+  height: 68px;
+  font-size: 18px;
+}
+
+#send {
+  border: none;
+  background: #B8B8FF;
+  margin: 1% 0 1% 1%;
+  width: 10%;
+  height: 68px;
+}
+
+#imgfromdisk {
+  margin-top: 1%;
+  width: 30px;
+  height: 30px;
+  
+}
+/* .fileImg
+{
+  margin-top: 1%;
+  width: 5%;
+  height: 40px;
+  background:url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png');
+  display: inline;
+} */
+
+section div {
+  max-width: 600px;
+  word-wrap: break-word;
+  word-break: normal;
+  margin-bottom: 20px;
+  line-height: 28px;
+}
+
+.clear {
+  clear: both;
+}
+
+.from-me {
+  margin-top: 1%;
+  right: 12%;
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  background: #0B93F6;
+  border-radius: 25px;
+  float: right;
+  font-family: "Helvetica Neue";
+  font-size: 20px;
+}
+
+.from-them {
+  margin-top: 1%;
+  left: 4%;
+  position: relative;
+  padding: 10px 20px;
+  color: black;
+  background: #E5E5EA;
+  border-radius: 25px;
+  float: left;
+  font-family: "Helvetica Neue";
+  font-size: 20px;
+}
+
+.mychatAvator {
+  position: relative;
+  margin-top: 1%;
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  border-radius: 8%;
+  left: 90%;
+}
+
+.otherchatAvator {
+  position: relative;
+  margin-top: 1%;
+  width: 55px;
+  height: 55px;
+  border-radius: 8%;
+  left: 2%;
+  float: left;
+}
+
+.imgBox
+{
+   max-width: 570px;
+}

@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+  <title>Chatroom</title>
+  <meta charset="UTF-8">
+  
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  >
+  <link rel="stylesheet" type="text/css" href="styles.css" >
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+  <script src="clientchat.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sco.js/1.1.0/css/sco.message.css"  >
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-ice.css"  >
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.css"  >
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-future.css"  >
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-flat.css"  >
+  <script src='https://cdn.bootcss.com/sco.js/1.1.0/js/sco.message.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger-theme-flat.js'></script>
+</head>
+
+
+  <body>
+  <div  class="userListContainer col-sm-3">
+    <div class="row">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-user">　<span id="chatMemberText">Chat</span></span>
+        </div>
+        <div class="userlist-body">
+          
+          <li class="user"><a href="#">　<img src="https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg" class="userthumbnail">　<span>Doge</span></a></li>
+          <!--
+          <li class="user"><a href="#">　<img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" class="userthumbnail">　<span>Karol</span></a></li>
+          
+          -->
+        </div>
+    </div>
+  </div>
+  
+  <div class="chatContainer col-sm-7">        <div class="row">
+         <div class="panel-heading">
+      <span class="glyphicon glyphicon-comment"></span>　<span id="chatroomNameText">Public chat room</span><span class="welcome">Welcome,</span>
+    </div> 
+    <section class="messageFlow">
+       
+    <!--        
+    <div class="from-me">
+      <p>Hello,　I'm Doge. What's your name?</p>
+    </div>
+     <img src="https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg" class="mychatAvator">
+  <div class="clear"></div>
+    
+    <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" class="otherchatAvator">        
+    <div class="from-them">
+      <p>Hi Doge,　I'm Karol.</p>
+    </div>
+  <div class="clear"></div>
+    <div class="from-me">
+      <p>This is public chat room.</p>
+    </div>
+    <img src="https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg" class="mychatAvator">
+  <div class="clear"></div>
+            
+     <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" class="otherchatAvator">
+    <div class="from-them">
+      <p>It's pretty cool!</p>
+
+    </div>
+   
+  <div class="clear"></div>
+    <div class="from-me">
+      <p>Lorem ipsum dolor sit amet, ea oblique constituam signiferumque eam. Pri adipisci maluisset te.</p>
+    </div>
+     <img src="https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg" class="mychatAvator">       
+    
+  <div class="clear"></div>
+    <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" class="otherchatAvator">
+    <div class="from-them">
+      <p>Hey Doge, What are you saying? Is that invocation or magic spell ?</p>
+    </div>
+     
+      -->       
+    </section>
+          <div class="inputContainer">
+            <!--
+            <form action="">
+              -->
+              <label >
+                <img id="imgfromdisk"  src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-128.png">
+                <input id="imgUpload" style="display:none;" class="upload" type="file" src="" vaule="" accept="image/*" >
+              </label>
+              <input id="message" autocomplete="off" placeholder="Type your message..."><button id="send">Send</button>
+            <!--
+            </form>
+            -->
+          </div>
+      </div>
+  </div>
+  
+   <div id="userInfoModal" class="modal fade bs-example-modal-sm">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="chatSettingText">Please set up the configuration of chatroom</h3>
+        </div>
+        <div class="modal-body">
+          <div  class="input-group">
+            <span id="nicknameText" class="input-group-addon" >Nickname</span>
+  <input id="nickname" type="text" class="form-control" placeholder="username or nickname here" aria-describedby="basic-addon1">
+          </div><br>
+       
+       <div class="input-group">
+            <span id="avatarText" class="input-group-addon" >Avatar/Icon</span>
+  <input id="headImage" type="url" class="form-control" placeholder="the url address of your image here" aria-describedby="basic-addon1">
+          </div><br>
+          
+          <div  class="input-group">
+            <span id="languageText" class="input-group-addon" >Language</span>
+  <select id="language"  class="form-control" >
+    <option value="eng">English</option>
+    <option value="cn">繁體中文</option>
+    <option value="jp">日本語</option>
+    </select>
+          </div>
+        </div><br>
+        
+        <div class="modal-footer">
+          <button id="saveSetting" type="button" class="btn btn-primary" >OK</button>
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+  <div id="sendMsgToOne" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="sendToOneText" class="modal-title"></h4>
+        </div>
+        <div class="modal-body">       
+  <input id="inputMsgToOne" type="text"  placeholder="message here" onkeydown="javacript:keywordsName(event);" class="" size="70">
+        </div>
+        <div class="modal-footer">
+          <button id="btnToOne" type="button" class="btn btn-primary" >OK</button>
+        </div>
+      </div> 
+    </div>
+  </div>
+    
+</body>
+  
+
+</html>
