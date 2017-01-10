@@ -55,8 +55,8 @@ var defaultImgSrc = "https://media0.giphy.com/media/qrwthQPPQrtEk/200_s.gif";
 $(document).ready(function()
 {
      $('#userInfoModal').modal('show');
-    
-  
+
+
     $('#saveSetting').on('click', function()
     {
        var name = $('#nickname').val();
@@ -71,15 +71,15 @@ $(document).ready(function()
            name: $('#nickname').val(),
            img: "https://media0.giphy.com/media/qrwthQPPQrtEk/200_s.gif"
          };
-         
+
          entries['name']　= userDataObj.name;
          if($('#headImage').val().trim() !== "")
          {
             userDataObj.img = $('#headImage').val();
          }
          socket.emit('login', userDataObj);
-       
-        
+
+
          setLanguage(entries[$('#language').find(":selected").val()]);
          entries.UILanguage = entries[$('#language').find(":selected").val()];
          $('#userInfoModal').modal('hide');
@@ -87,7 +87,7 @@ $(document).ready(function()
          $('#message').focus();
        }
     });
-    
+
     $('#imgUpload').on('change', function()
     {
       if(this.files.length !== 0)
@@ -111,7 +111,7 @@ $(document).ready(function()
         reader.readAsDataURL(file);
       }
     });
-    
+
     $('#message').on('keypress', function(event)
     {
       var msg = $('#message').val();
@@ -120,7 +120,7 @@ $(document).ready(function()
         $('#send').trigger('click');
       }
     });
-    
+
     $('#inputMsgToOne').on('keypress', function(event)
     {
       var msg = $('#inputMsgToOne').val();
@@ -129,8 +129,8 @@ $(document).ready(function()
         $('#btnToOne').trigger('click');
       }
     });
-    
-    
+
+
     $('#send').on('click', function()
     {
       var msg = $('#message').val();
@@ -153,7 +153,7 @@ $(document).ready(function()
     extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
     theme: 'future'
     };
-  
+
     $('#btnToOne').on('click', function()
     {
       console.log();
@@ -163,7 +163,7 @@ $(document).ready(function()
         alert("Please enter the message content !");
         return;
       }
-      
+
       var msgObj = {
         from: userSelf,
         to: toOneId,
@@ -172,12 +172,8 @@ $(document).ready(function()
       socket.emit('toOne', msgObj);
       $('#sendMsgToOne').modal('hide');
       $('#inputMsgToOne').val('');
-    });  
-  
-    // $("#language").on('change', function()
-    // {
-    //     setLanguage(entries[$(this).val()]);
-    // });
+    });
+
 });
 
 function setLanguage(entriesChose)
@@ -191,10 +187,7 @@ function setLanguage(entriesChose)
    $('#chatroomNameText').text(entriesChose.chatRoomName);
    $('#send').text(entriesChose.send);
    $('#message').attr("placeholder", entriesChose.inputhint);
-    // if(entries.hasOwnProperty("name"))
-    // {
-    //   $('.welcome').text(entries.name + entriesChose.welcome  );
-    // }
+
 }
 
 function checkUser(name)
@@ -223,7 +216,7 @@ function showMsg(type)
 
 function addUser(userList)
 {
-   
+
   var parentUI =  $('.userlist-body');
   var cloneLi = parentUI.children('li:first').clone();
   parentUI.html("");
@@ -239,7 +232,7 @@ function addUser(userList)
     parentUI.append(cloneLi);
   }
   parentUI.children("li:first").remove();
-  
+
 }
 
 function updateUser(userList)
@@ -257,7 +250,7 @@ function updateUser(userList)
     parentUI.append(userHtml);
   });
 
-  
+
 }
 
 
@@ -265,12 +258,12 @@ function updateUser(userList)
 
 //add message in UI. add message with messagebox
 // if isSelf equal to false, meaning that the message receive from other user
-//isSelf 為true時,訊息就是自己發的;false時則是別人發的 
+//isSelf 為true時,訊息就是自己發的;false時則是別人發的
 function addMsgFromUser(msgObj, isSelf)
 {
   var msgHtml = isSelf ? $('<div><div class="from-me"><p></p></div><img src="#" class="mychatAvator"><div class="clear"></div></div>') :
                         $('<div><img src="#" class="otherchatAvator"><div class="from-them"><p></p></div><div class="clear"></div></div>');
-  
+
   msgHtml.children('img').attr('src', msgObj.from.img);
   msgHtml.children('img').attr('title', msgObj.from.name);
   if(isSelf)
@@ -324,7 +317,6 @@ function keywordsMsg(e)
   var event = e || window.event;
   if(event.keyCode == 13)
   {
-    $('#send').click(); 
+    $('#send').click();
   }
 }
-
