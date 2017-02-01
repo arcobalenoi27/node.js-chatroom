@@ -1,4 +1,3 @@
-
 var entriesDataEng = {
   nickname: "Nickname",
   avatar : "Avatar/Icon",
@@ -69,7 +68,7 @@ $(document).ready(function()
        {
          var userDataObj = {
            name: $('#nickname').val(),
-           img: "https://media0.giphy.com/media/qrwthQPPQrtEk/200_s.gif"
+           img: randomImages()
          };
 
          entries['name']　= userDataObj.name;
@@ -274,6 +273,7 @@ function addMsgFromUser(msgObj, isSelf)
   //Scroll to bottom of Div
   //滾動條一直在最底部
   $('.messageFlow').scrollTop($('.messageFlow')[0].scrollHeight);
+  notificationSoundPlay();
 }
 
 //add Img to UI
@@ -291,6 +291,7 @@ function addImgFromUser(msgObj, isSelf)
   //Scroll to bottom of Div
   //滾動條一直在最底部
   $('.messageFlow').scrollTop($('.messageFlow')[0].scrollHeight);
+  notificationSoundPlay();
 }
 
 function showSetMsgToOne(name, id)
@@ -319,4 +320,40 @@ function keywordsMsg(e)
   {
     $('#send').click();
   }
+}
+
+//Sound effect
+function notificationSoundPlay() {
+  var audio = new Audio('http://www.senderogroup.com/mp3/sounds/alert_drip.wav');
+  audio.play();
+}
+
+// Recieved Message from someone
+function msgFromOneNotification() {
+  var audio = new Audio('http://www.flan4u.com/downloads/Wave-files/sound-effects/ADJUST.WAV');
+  audio.play();
+}
+
+function disconnectFromSys(UserObj)
+{
+  // console.log(UserObj);
+  $.scojs_message(UserObj.name + entries.UILanguage.logoutText, $.scojs_message.TYPE_ERROR);
+}
+
+//send message enter function
+function keywordsMsg(e)
+{
+  var event = e || window.event;
+  if(event.keyCode == 13)
+  {
+    $('#send').click(); 
+  }
+}
+
+//Random Image
+function randomImages() {
+    var imgSrc = 'https://raw.githubusercontent.com/arcobalenoi27/node.js-chatroom/master/assets/images/';
+    var imageRandom = Math.floor(Math.random() * 10) + '.png';
+    imageRandom = imgSrc + imageRandom;
+    return imageRandom;
 }
